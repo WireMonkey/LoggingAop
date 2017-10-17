@@ -1,0 +1,882 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VeritasInfrastructureAPI.RepositoryLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:VeritasInfrastructureAPI.RepositoryLibrary.GenericRepository`1">
+            <summary>
+            Represents Generic Repository
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.IGenericRepository`1.Delete(System.Object[])">
+            <summary>
+                Deletes an entity in the repository
+            </summary>
+            <param name="keyValues">The values of the primary key for the entity to be deleted</param>
+            <example>
+                    <code>
+                            public void GenericRepository_OrderType_Delete_Keys()
+                            {
+                                   InventoryEntities InventoryContext = new InventoryEntities();
+                                   UnitOfWork uow = new UnitOfWork(InventoryContext);
+                                   GenericRepository&lt;OrderType&gt; OrderTypes = uow.GetGenericRepository&lt;OrderType&gt;();
+                                   OrderType ot = new OrderType();
+                                   ot.OrderTypeText = "TEST";
+                                   ot.OrderTypeVal = "TEST";
+                                   ot.ProjectID = 405;
+                                   OrderTypes.Insert(ot);
+                                   uow.Commit();
+                                   OrderTypes.Delete(ot.OrderTypeID);
+                                   uow.Commit();
+                            }
+                    </code>
+            </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.IGenericRepository`1.Delete(`0)">
+            <summary>
+                Deletes an entity in the repository
+            </summary>
+            <param name="entityToDelete">The entity to be deleted</param>
+            <example>
+                    <code>
+                            public void GenericRepository_OrderType_Delete_Keys()
+                            {
+                                   InventoryEntities InventoryContext = new InventoryEntities();
+                                   UnitOfWork uow = new UnitOfWork(InventoryContext);
+                                   GenericRepository&lt;OrderType&gt; OrderTypes = uow.GetGenericRepository&lt;OrderType&gt;();
+                                   foreach (OrderType ot in OrderTypes.Queryable().Where(p => p.ProjectID == 405).Where(ov => ov.OrderTypeVal == "TEST"))
+                                   {
+                                        OrderTypes.Delete(ot);
+                                   }
+                                   uow.Commit();
+                            }
+                    </code>
+            </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.IGenericRepository`1.DeleteAsync(System.Object[])">
+            <summary>
+                Asynchronously deletes an entity with the given primary key values
+            </summary>
+            <param name="keyValues">The values of the primary key for the entity to be found</param>
+            <returns>Task&lt;bool&gt;</returns>
+            <example>
+                    <code>
+                               async public Task&lt;bool&gt; Helper_Orders_DeleteAsynch()
+                               {
+                                   InventoryEntities InventoryContext = new InventoryEntities();
+                                   UnitOfWork uow = new UnitOfWork(InventoryContext);
+                                   GenericRepository&lt;Order&gt; Orders = uow.GetGenericRepository&lt;Order&gt;();
+                                   IQueryable&lt;Order&gt; Ords = Orders.All;
+                                   var query = (from o in Ords
+                                                orderby o.OrderID ascending
+                                                select o.OrderID).Take(1);
+                                   var od = await Orders.DeleteAsync(query.ToArray());
+                                   return od;
+                               }
+                    </code>
+            </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.IGenericRepository`1.Edit(`0)">
+            <summary>
+                Updates the database context
+            </summary>
+            <param name="entity">The entity to edit</param>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.IGenericRepository`1.Find(System.Object[])">
+            <summary>
+                Finds entity in the repository set
+            </summary>
+            <param name="keyValues">The values of the primary key for the entity to be found</param>
+            <returns>&lt;T&gt;</returns>
+            <example>
+                    <code>
+                            public void GenericRepository_Projects_Find()
+                            {
+                                InventoryEntities InventoryContext = new InventoryEntities();
+                                UnitOfWork uow = new UnitOfWork(InventoryContext);
+                                GenericRepository&lt;Project&gt; Projects = uow.GetGenericRepository&lt;Project&gt;();
+                                Project pr = Projects.Find(408);
+                                Debug.Write(pr.ProjectName.ToString());
+                            }
+                    </code>
+            </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.IGenericRepository`1.FindBy(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+                Finds entity in the repository set 
+            </summary>
+            <param name="predicate">A perdicate that filters the repository set</param>
+            <returns>IEnumerable&lt;T&gt;</returns>
+            <example>
+                    <code>
+                            public void GenericRepository_Locations_FindBy()
+                            {
+                                InventoryEntities InventoryContext = new InventoryEntities();
+                                UnitOfWork uow = new UnitOfWork(InventoryContext);
+                                GenericRepository&lt;Location&gt; Locations = uow.GetGenericRepository&lt;Location&gt;();
+                                foreach (Location l in Locations.FindBy(p => p.ProjectID == 534))
+                                {
+                                    Debug.Write(l.LocationCode.ToString());
+                                }
+                            }
+                    </code>
+            </example>        
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.IGenericRepository`1.Get(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.String)">
+            <summary>
+                Returns specified elements from the list of entities
+            </summary>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.IGenericRepository`1.Get(System.String[])">
+            <summary>
+                Returns specified elements from the list of entities
+            </summary>
+            <param name="filter">Filter function</param>
+            <param name="orderBy">Sorting order of the query results</param>
+            <param name="includeProperties">Related objects to include in the query results</param>
+            <returns>IEnumerable&lt;T&gt;</returns>
+            <example>
+                <code>
+                        public void GenericRepository_Batches_Get()
+                        {
+                            InventoryEntities InventoryContext = new InventoryEntities();
+                            UnitOfWork uow = new UnitOfWork(InventoryContext);
+                            GenericRepository&lt;Batch&gt; Batches = uow.GetGenericRepository&lt;Batch&gt;();
+                            IEnumerable&lt;Batch&gt; btchs = Batches.Get().Where(b => b.ProjectID == 440);
+                            foreach (Batch bat in btchs)
+                            {
+                                Debug.Write(bat.BatchDescription.ToString());
+                            }
+                         }
+                </code>
+            </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.IGenericRepository`1.GetAll">
+            <summary>
+                Returns all elements from the list of entities
+            </summary>
+            <returns>IEnumerable&lt;T&gt;</returns>
+            <example>
+                <code>
+                        public void GenericRepository_Customers_GetAll()
+                        {
+                            InventoryEntities InventoryContext = new InventoryEntities();
+                            UnitOfWork uow = new UnitOfWork(InventoryContext);
+                            GenericRepository&gt;Customer&gt; Customers = uow.GetGenericRepository&lt;Customer&gt;();
+                            IEnumerable&lt;Customer&gt; cstmrs = Customers.GetAll();
+                            foreach (Customer cus in cstmrs)
+                            {
+                                Debug.Write(cus.Company.ToString());
+                            }
+                        }
+                </code>
+            </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.IGenericRepository`1.GetByID(System.Object)">
+            <summary>
+               Returns specific element from the list of entities
+            </summary>
+            <param name="id">The values of the primary key for the entity to be found.</param>
+            <returns>T</returns>
+            <example>
+                <code>
+                        public void GenericRepository_Orders_GetByID()
+                        {
+                            InventoryEntities context = new InventoryEntities();
+                            UnitOfWork uow = new UnitOfWork(context);
+                            GenericRepository&lt;Order&gt; Orders = uow.GetGenericRepository&lt;Order&gt;();
+                            Order ord = Orders.GetByID(3570886);
+                            Debug.Write(ord.OrderID.ToString());
+                        }
+                </code>
+            </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.IGenericRepository`1.Insert(`0)">
+            <summary>
+                Adds an entity to the repository
+            </summary>
+            <param name="entity">The entity to be inserted</param>
+            <example>
+                    <code>
+                            public void GenericRepository_OrderType_Insert()
+                            {
+                                InventoryEntities InventoryContext = new InventoryEntities();
+                                UnitOfWork uow = new UnitOfWork(InventoryContext);
+                                GenericRepository&lt;OrderType&gt; OrderTypes = uow.GetGenericRepository&lt;OrderType&gt;();
+                                OrderType ot = new OrderType();
+                                ot.OrderTypeText = "TEST";
+                                ot.OrderTypeVal = "TEST";
+                                ot.ProjectID = 405;
+                                OrderTypes.Insert(ot);
+                                uow.Commit();
+                            }
+                    </code>
+            </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.IGenericRepository`1.InsertGraphRange(System.Collections.Generic.IEnumerable{`0})">
+             <summary>
+                 Adds ranage of entities into repository
+             </summary>
+             <param name="entities">Entities to be added</param>
+             <example>
+                     <code>
+                                public void GenericRepository_OrderOption_Insert_Range()
+                                {
+            
+                                    InventoryEntities InventoryContext = new InventoryEntities();
+                                    UnitOfWork uow = new UnitOfWork(InventoryContext);
+                                    GenericRepository&lt;OrderOption&gt; OrderOptions = uow.GetGenericRepository&lt;OrderOption&gt;();
+                                    var iopt = new List&lt;OrderOption&gt;();
+                                    for (int x = 1; x &lt; 3; x++)
+                                    {
+                                        var rnum = new Random().Next(3000000, 5000000);
+                                        OrderOption oopt = new OrderOption();
+                                        oopt.Orderid = rnum;
+                                        oopt.OptionName = "TEST_" + x.ToString();
+                                        oopt.OptionValue = "TEST_" + x.ToString();
+                                        iopt.Add(oopt);
+                                    }
+                                    OrderOptions.InsertRange(iopt.AsEnumerable());
+                                    uow.Commit();
+                                }
+                     </code>
+             </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.IGenericRepository`1.InsertRange(System.Collections.Generic.IEnumerable{`0})">
+             <summary>
+                 Adds ranage of entities into repository
+             </summary>
+             <param name="entities">Entities to be added</param>
+             <example>
+                     <code>
+                                public void GenericRepository_OrderOption_Insert_Range()
+                                {
+            
+                                    InventoryEntities InventoryContext = new InventoryEntities();
+                                    UnitOfWork uow = new UnitOfWork(InventoryContext);
+                                    GenericRepository&lt;OrderOption&gt; OrderOptions = uow.GetGenericRepository&lt;OrderOption&gt;();
+                                    var iopt = new List&lt;OrderOption&gt;();
+                                    for (int x = 1; x &lt; 3; x++)
+                                    {
+                                        var rnum = new Random().Next(3000000, 5000000);
+                                        OrderOption oopt = new OrderOption();
+                                        oopt.Orderid = rnum;
+                                        oopt.OptionName = "TEST_" + x.ToString();
+                                        oopt.OptionValue = "TEST_" + x.ToString();
+                                        iopt.Add(oopt);
+                                    }
+                                    OrderOptions.InsertRange(iopt.AsEnumerable());
+                                    uow.Commit();
+                                }
+                     </code>
+             </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.IGenericRepository`1.Queryable">
+            <summary>
+                Returns entities in the set
+            </summary>
+            <returns>IQueryable&lt;T&gt;</returns>
+            <example>
+                    <code>
+                            public void GenericRepository_Inventory_Queryable()
+                            {
+                                InventoryEntities InventoryContext = new InventoryEntities();
+                                UnitOfWork uow = new UnitOfWork(InventoryContext);
+                                GenericRepository&lt;Inventory&gt; Inventories = uow.GetGenericRepository&lt;Inventory&gt;();
+                                IQueryable&lt;Inventory&gt; inv = Inventories.Queryable().Where(i => i.ProjectID == 405);
+                                foreach (Inventory itry in inv)
+                                {
+                                    Debug.Write(itry.Bar_Code.ToString());
+                                }
+                            }
+                    </code>
+            </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.IGenericRepository`1.Save">
+            <summary>
+                Saves all changes made in this context to the underlying database
+            </summary>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.IGenericRepository`1.SelectQuery(System.String,System.Object[])">
+            <summary>
+                Creates a raw SQL query that will return entities in the set
+            </summary>
+            <param name="query">SQL query string</param>
+            <param name="parameters">The parameters to apply to the SQL query string.</param>
+            <returns>IQueryable&lt;T&gt;</returns>
+            <example>
+                    <code>
+                            public void GenericRepository_Inventory_SelectQuery()
+                            {
+                                InventoryEntities InventoryContext = new InventoryEntities();
+                                UnitOfWork uow = new UnitOfWork(InventoryContext);
+                                GenericRepository&lt;Inventory&gt; Inventories = uow.GetGenericRepository&lt;Inventory&gt;();
+                                var itrs = Inventories.SelectQuery("SELECT * FROM dbo.Inventory WHERE ProjectID = {0}", new object[] { 405 });
+                                foreach (Inventory inv in itrs)
+                                {
+                                    Debug.Write(inv.Bar_Code.ToString());
+                                }
+                            }    
+                    </code>
+            </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.IGenericRepository`1.Update(`0)">
+            <summary>
+                Updates an entity in the repository
+            </summary>
+            <param name="entityToUpdate">The entity to be updated</param>
+            <example>
+                    <code>
+                            public void GenericRepository_OrderType_Update()
+                            {
+                                InventoryEntities InventoryContext = new InventoryEntities();
+                                UnitOfWork uow = new UnitOfWork(InventoryContext);
+                                GenericRepository&lt;OrderType&gt; OrderTypes = uow.GetGenericRepository&lt;OrderType&gt;();
+                                foreach (OrderType ot in OrderTypes.Queryable().Where(p => p.ProjectID == 405).Where(ov => ov.OrderTypeVal == "TEST"))
+                                {
+                                    ot.OrderTypeText = "TESTUPDATE";
+                                    OrderTypes.Update(ot);
+                                }
+                                uow.Commit();
+                            }
+                    </code>
+            </example>
+        </member>
+        <member name="P:VeritasInfrastructureAPI.RepositoryLibrary.IGenericRepository`1.All">
+            <summary>
+                Returns all elements from the list of entities
+            </summary>
+            <returns>IQueryable&lt;T&gt;</returns>
+            <example>
+                <code>
+                        public void GenericRepository_Customers_All()
+                        {
+                            InventoryEntities InventoryContext = new InventoryEntities();
+                            UnitOfWork uow = new UnitOfWork(InventoryContext);
+                            GenericRepository&gt;Customer&gt; Customers = uow.GetGenericRepository&lt;Customer&gt;();
+                            IEnumerable&lt;Customer&gt; cstmrs = Customers.All();
+                            foreach (Customer cus in cstmrs)
+                            {
+                                Debug.Write(cus.Company.ToString());
+                            }
+                        }
+                </code>
+            </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.GenericRepository`1.#ctor(System.Data.Entity.DbContext)">
+            <summary>
+                Creates a new instance of the GenericRepository
+            </summary>
+            <param name="context">
+            <para>Database context</para>
+            </param>
+            <example>
+                <code>
+                    InventoryEntities InventoryContext = new InventoryEntities();
+                    UnitOfWork uow = new UnitOfWork(InventoryContext);
+                    GenericRepository&lt;Batch&gt; Batches = uow.GetGenericRepository&lt;Batch&gt;();
+                </code>
+            </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.GenericRepository`1.Get(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Func{System.Linq.IQueryable{`0},System.Linq.IOrderedQueryable{`0}},System.String)">
+            <summary>
+                Returns specified elements from the list of entities
+            </summary>
+            <param name="filter">Filter function</param>
+            <param name="orderBy">Sorting order of the query results</param>
+            <param name="includeProperties">Related objects to include in the query results</param>
+            <returns>IEnumerable&lt;T&gt;</returns>
+            <example>
+                <code>
+                        public void GenericRepository_Batches_Get()
+                        {
+                            InventoryEntities InventoryContext = new InventoryEntities();
+                            UnitOfWork uow = new UnitOfWork(InventoryContext);
+                            GenericRepository&lt;Batch&gt; Batches = uow.GetGenericRepository&lt;Batch&gt;();
+                            IEnumerable&lt;Batch&gt; btchs = Batches.Get(new {"ProjectID = 440","BatchDescription LIKE 'Hewitt%'" })
+                            foreach (Batch bat in btchs)
+                            {
+                                Debug.Write(bat.BatchDescription.ToString());
+                            }
+                         }
+                </code>
+            </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.GenericRepository`1.GetAll">
+            <summary>
+                Returns all elements from the list of entities
+            </summary>
+            <returns>IEnumerable&lt;T&gt;</returns>
+            <example>
+                <code>
+                        public void GenericRepository_Customers_GetAll()
+                        {
+                            InventoryEntities InventoryContext = new InventoryEntities();
+                            UnitOfWork uow = new UnitOfWork(InventoryContext);
+                            GenericRepository&gt;Customer&gt; Customers = uow.GetGenericRepository&lt;Customer&gt;();
+                            IEnumerable&lt;Customer&gt; cstmrs = Customers.GetAll();
+                            foreach (Customer cus in cstmrs)
+                            {
+                                Debug.Write(cus.Company.ToString());
+                            }
+                        }
+                </code>
+            </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.GenericRepository`1.GetByID(System.Object)">
+            <summary>
+               Returns specific element from the list of entities
+            </summary>
+            <param name="id">The values of the primary key for the entity to be found.</param>
+            <returns>T</returns>
+            <example>
+                <code>
+                        public void GenericRepository_Orders_GetByID()
+                        {
+                            InventoryEntities context = new InventoryEntities();
+                            UnitOfWork uow = new UnitOfWork(context);
+                            GenericRepository&lt;Order&gt; Orders = uow.GetGenericRepository&lt;Order&gt;();
+                            Order ord = Orders.GetByID(3570886);
+                            Debug.Write(ord.OrderID.ToString());
+                        }
+                </code>
+            </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.GenericRepository`1.Get(System.String[])">
+            <summary>
+                Returns list of entities from the respository
+            </summary>
+            <param name="include">Related objects to include in the results</param>
+            <returns>IQueryable&lt;T&gt;</returns>
+            <example>
+                <code>
+                        public void GenericRepository_Locations_Get()
+                        {
+                            InventoryEntities InventoryContext = new InventoryEntities();
+                            UnitOfWork uow = new UnitOfWork(InventoryContext);
+                            GenericRepository&lt;Location&gt; Locations = uow.GetGenericRepository&lt;Location&gt;();
+                            string[] inc = { "InventoryLocationType" };
+                            IEnumerable&lt;Location&gt; locs = Locations.Get(inc);
+                            foreach (Location loc in locs)
+                            {
+                                Debug.Write(loc.LocationCode.ToString());
+                            }
+                         }
+                </code>
+            </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.GenericRepository`1.Insert(`0)">
+            <summary>
+                Adds an entity to the repository
+            </summary>
+            <param name="entity">The entity to be inserted</param>
+            <example>
+                    <code>
+                            public void GenericRepository_OrderType_Insert()
+                            {
+                                InventoryEntities InventoryContext = new InventoryEntities();
+                                UnitOfWork uow = new UnitOfWork(InventoryContext);
+                                GenericRepository&lt;OrderType&gt; OrderTypes = uow.GetGenericRepository&lt;OrderType&gt;();
+                                OrderType ot = new OrderType();
+                                ot.OrderTypeText = "TEST";
+                                ot.OrderTypeVal = "TEST";
+                                ot.ProjectID = 405;
+                                OrderTypes.Insert(ot);
+                                uow.Commit();
+                            }
+                    </code>
+            </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.GenericRepository`1.Update(`0)">
+            <summary>
+                Updates an entity in the repository
+            </summary>
+            <param name="entityToUpdate">The entity to be updated</param>
+            <example>
+                    <code>
+                            public void GenericRepository_OrderType_Update()
+                            {
+                                InventoryEntities InventoryContext = new InventoryEntities();
+                                UnitOfWork uow = new UnitOfWork(InventoryContext);
+                                GenericRepository&lt;OrderType&gt; OrderTypes = uow.GetGenericRepository&lt;OrderType&gt;();
+                                foreach (OrderType ot in OrderTypes.Queryable().Where(p => p.ProjectID == 405).Where(ov => ov.OrderTypeVal == "TEST"))
+                                {
+                                    ot.OrderTypeText = "TESTUPDATE";
+                                    OrderTypes.Update(ot);
+                                }
+                                uow.Commit();
+                            }
+                    </code>
+            </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.GenericRepository`1.Delete(System.Object[])">
+            <summary>
+                Deletes an entity in the repository
+            </summary>
+            <param name="keyValues">The values of the primary key for the entity to be deleted</param>
+            <example>
+                    <code>
+                            public void GenericRepository_OrderType_Delete_Keys()
+                            {
+                                   InventoryEntities InventoryContext = new InventoryEntities();
+                                   UnitOfWork uow = new UnitOfWork(InventoryContext);
+                                   GenericRepository&lt;OrderType&gt; OrderTypes = uow.GetGenericRepository&lt;OrderType&gt;();
+                                   OrderType ot = new OrderType();
+                                   ot.OrderTypeText = "TEST";
+                                   ot.OrderTypeVal = "TEST";
+                                   ot.ProjectID = 405;
+                                   OrderTypes.Insert(ot);
+                                   uow.Commit();
+                                   OrderTypes.Delete(ot.OrderTypeID);
+                                   uow.Commit();
+                            }
+                    </code>
+            </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.GenericRepository`1.Delete(`0)">
+            <summary>
+                Deletes an entity in the repository
+            </summary>
+            <param name="entityToDelete">The entity to be deleted</param>
+            <example>
+                    <code>
+                            public void GenericRepository_OrderType_Delete_Keys()
+                            {
+                                   InventoryEntities InventoryContext = new InventoryEntities();
+                                   UnitOfWork uow = new UnitOfWork(InventoryContext);
+                                   GenericRepository&lt;OrderType&gt; OrderTypes = uow.GetGenericRepository&lt;OrderType&gt;();
+                                   foreach (OrderType ot in OrderTypes.Queryable().Where(p => p.ProjectID == 405).Where(ov => ov.OrderTypeVal == "TEST"))
+                                   {
+                                        OrderTypes.Delete(ot);
+                                   }
+                                   uow.Commit();
+                            }
+                    </code>
+            </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.GenericRepository`1.Find(System.Object[])">
+            <summary>
+                Finds entity in the repository set
+            </summary>
+            <param name="keyValues">The values of the primary key for the entity to be found</param>
+            <returns>&lt;T&gt;</returns>
+            <example>
+                    <code>
+                            public void GenericRepository_Projects_Find()
+                            {
+                                InventoryEntities InventoryContext = new InventoryEntities();
+                                UnitOfWork uow = new UnitOfWork(InventoryContext);
+                                GenericRepository&lt;Project&gt; Projects = uow.GetGenericRepository&lt;Project&gt;();
+                                Project pr = Projects.Find(408);
+                                Debug.Write(pr.ProjectName.ToString());
+                            }
+                    </code>
+            </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.GenericRepository`1.SelectQuery(System.String,System.Object[])">
+            <summary>
+                Creates a raw SQL query that will return entities in the set
+            </summary>
+            <param name="query">SQL query string</param>
+            <param name="parameters">The parameters to apply to the SQL query string.</param>
+            <returns>IQueryable&lt;T&gt;</returns>
+            <example>
+                    <code>
+                            public void GenericRepository_Inventory_SelectQuery()
+                            {
+                                InventoryEntities InventoryContext = new InventoryEntities();
+                                UnitOfWork uow = new UnitOfWork(InventoryContext);
+                                GenericRepository&lt;Inventory&gt; Inventories = uow.GetGenericRepository&lt;Inventory&gt;();
+                                var itrs = Inventories.SelectQuery("SELECT * FROM dbo.Inventory WHERE ProjectID = {0}", new object[] { 405 });
+                                foreach (Inventory inv in itrs)
+                                {
+                                    Debug.Write(inv.Bar_Code.ToString());
+                                }
+                            }    
+                    </code>
+            </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.GenericRepository`1.InsertRange(System.Collections.Generic.IEnumerable{`0})">
+             <summary>
+                 Adds range of entities into repository
+             </summary>
+             <param name="entities">Entities to be added</param>
+             <example>
+                     <code>
+                                public void GenericRepository_OrderOption_Insert_Range()
+                                {
+            
+                                    InventoryEntities InventoryContext = new InventoryEntities();
+                                    UnitOfWork uow = new UnitOfWork(InventoryContext);
+                                    GenericRepository&lt;OrderOption&gt; OrderOptions = uow.GetGenericRepository&lt;OrderOption&gt;();
+                                    var iopt = new List&lt;OrderOption&gt;();
+                                    for (int x = 1; x &lt; 3; x++)
+                                    {
+                                        var rnum = new Random().Next(3000000, 5000000);
+                                        OrderOption oopt = new OrderOption();
+                                        oopt.Orderid = rnum;
+                                        oopt.OptionName = "TEST_" + x.ToString();
+                                        oopt.OptionValue = "TEST_" + x.ToString();
+                                        iopt.Add(oopt);
+                                    }
+                                    OrderOptions.InsertRange(iopt.AsEnumerable());
+                                    uow.Commit();
+                                }
+                     </code>
+             </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.GenericRepository`1.InsertGraphRange(System.Collections.Generic.IEnumerable{`0})">
+             <summary>
+                 Adds ranage of entities into repository
+             </summary>
+             <param name="entities">Entities to be added</param>
+             <example>
+                     <code>
+                                public void GenericRepository_OrderOption_Insert_Range()
+                                {
+            
+                                    InventoryEntities InventoryContext = new InventoryEntities();
+                                    UnitOfWork uow = new UnitOfWork(InventoryContext);
+                                    GenericRepository&lt;OrderOption&gt; OrderOptions = uow.GetGenericRepository&lt;OrderOption&gt;();
+                                    var iopt = new List&lt;OrderOption&gt;();
+                                    for (int x = 1; x &lt; 3; x++)
+                                    {
+                                        var rnum = new Random().Next(3000000, 5000000);
+                                        OrderOption oopt = new OrderOption();
+                                        oopt.Orderid = rnum;
+                                        oopt.OptionName = "TEST_" + x.ToString();
+                                        oopt.OptionValue = "TEST_" + x.ToString();
+                                        iopt.Add(oopt);
+                                    }
+                                    OrderOptions.InsertRange(iopt.AsEnumerable());
+                                    uow.Commit();
+                                }
+                     </code>
+             </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.GenericRepository`1.Queryable">
+            <summary>
+                Returns entities in the set
+            </summary>
+            <returns>IQueryable&lt;T&gt;</returns>
+            <example>
+                    <code>
+                            public void GenericRepository_Inventory_Queryable()
+                            {
+                                InventoryEntities InventoryContext = new InventoryEntities();
+                                UnitOfWork uow = new UnitOfWork(InventoryContext);
+                                GenericRepository&lt;Inventory&gt; Inventories = uow.GetGenericRepository&lt;Inventory&gt;();
+                                IQueryable&lt;Inventory&gt; inv = Inventories.Queryable().Where(i => i.ProjectID == 405);
+                                foreach (Inventory itry in inv)
+                                {
+                                    Debug.Write(itry.Bar_Code.ToString());
+                                }
+                            }
+                    </code>
+            </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.GenericRepository`1.FindBy(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+                Finds entity in the repository set 
+            </summary>
+            <param name="predicate">A perdicate that filters the repository set</param>
+            <returns>IEnumerable&lt;T&gt;</returns>
+            <example>
+                    <code>
+                            public void GenericRepository_Locations_FindBy()
+                            {
+                                InventoryEntities InventoryContext = new InventoryEntities();
+                                UnitOfWork uow = new UnitOfWork(InventoryContext);
+                                GenericRepository&lt;Location&gt; Locations = uow.GetGenericRepository&lt;Location&gt;();
+                                foreach (Location l in Locations.FindBy(p => p.ProjectID == 534))
+                                {
+                                    Debug.Write(l.LocationCode.ToString());
+                                }
+                            }
+                    </code>
+            </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.GenericRepository`1.IsAvailable(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+                Finds entity available or not 
+            </summary>
+            <param name="predicate">A perdicate that filters the repository set</param>
+            <returns>ture when entity avialable otherwise returns false.</returns>
+            <example>
+                    <code>
+                            public void GenericRepository_Locations_IsAvailable()
+                            {
+                                InventoryEntities InventoryContext = new InventoryEntities();
+                                UnitOfWork uow = new UnitOfWork(InventoryContext);
+                                GenericRepository&lt;Location&gt; Locations = uow.GetGenericRepository&lt;Location&gt;();
+                                Debug.Write(Locations.IsAvailable(p => p.ProjectID == 534));
+                            }
+                    </code>
+            </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.GenericRepository`1.Edit(`0)">
+            <summary>
+                Updates the database context
+            </summary>
+            <param name="entity">The entity to edit</param>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.GenericRepository`1.Save">
+            <summary>
+                Saves all changes made in this context to the underlying database
+            </summary>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.GenericRepository`1.FindAsync(System.Object[])">
+            <summary>
+                Asynchronously finds an entity with the given primary key values
+            </summary>
+            <param name="keyValues">The values of the primary key for the entity to be found</param>
+            <returns>Task&lt;T&gt;</returns>
+            <example>
+                    <code>
+                            async public void GenericRepository_Transactions_FindAsynch()
+                            {
+                                InventoryEntities InventoryContext = new InventoryEntities();
+                                UnitOfWork uow = new UnitOfWork(InventoryContext);
+                                GenericRepository&lt;Transaction&gt; Transactions = uow.GetGenericRepository&lt;Transaction&gt;();
+                                var tr = await Transactions.FindAsync(19588755);
+                                Debug.Write(tr.TransactionID.ToString());
+                            }
+                    </code>
+            </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.GenericRepository`1.FindAsync(System.Threading.CancellationToken,System.Object[])">
+            <summary>
+                Asynchronously finds an entity with the given primary key values
+            </summary>
+            <param name="cancellationToken">A CancellationToken to observe while waiting for the task to complete</param>
+            <param name="keyValues">The values of the primary key for the entity to be found</param>
+            <returns>Task&lt;T&gt;</returns>
+            <example>
+                    <code>
+                            async public void GenericRepository_Transactions_FindAsynch()
+                            {
+                                InventoryEntities InventoryContext = new InventoryEntities();
+                                UnitOfWork uow = new UnitOfWork(InventoryContext);
+                                GenericRepository&lt;Transaction&gt; Transactions = uow.GetGenericRepository&lt;Transaction&gt;();
+                                var tr = await Transactions.FindAsync(CancellationToken.None, 19588755);
+                                Debug.Write(tr.TransactionID.ToString());
+                            }
+                    </code>
+            </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.GenericRepository`1.DeleteAsync(System.Object[])">
+            <summary>
+                Asynchronously deletes an entity with the given primary key values
+            </summary>
+            <param name="keyValues">The values of the primary key for the entity to be found</param>
+            <returns>Task&lt;bool&gt;</returns>
+            <example>
+                    <code>
+                               async public Task&lt;bool&gt; Helper_Orders_DeleteAsynch()
+                               {
+                                   InventoryEntities InventoryContext = new InventoryEntities();
+                                   UnitOfWork uow = new UnitOfWork(InventoryContext);
+                                   GenericRepository&lt;Order&gt; Orders = uow.GetGenericRepository&lt;Order&gt;();
+                                   IQueryable&lt;Order&gt; Ords = Orders.All;
+                                   var query = (from o in Ords
+                                                orderby o.OrderID ascending
+                                                select o.OrderID).Take(1);
+                                   var od = await Orders.DeleteAsync(query.ToArray());
+                                   return od;
+                               }
+                    </code>
+            </example>
+        </member>
+        <member name="P:VeritasInfrastructureAPI.RepositoryLibrary.GenericRepository`1.All">
+            <summary>
+                Returns all elements from the list of entities
+            </summary>
+            <returns>IQueryable&lt;T&gt;</returns>
+            <example>
+                <code>
+                        public void GenericRepository_Customers_All()
+                        {
+                            InventoryEntities InventoryContext = new InventoryEntities();
+                            UnitOfWork uow = new UnitOfWork(InventoryContext);
+                            GenericRepository&gt;Customer&gt; Customers = uow.GetGenericRepository&lt;Customer&gt;();
+                            IEnumerable&lt;Customer&gt; cstmrs = Customers.All();
+                            foreach (Customer cus in cstmrs)
+                            {
+                                Debug.Write(cus.Company.ToString());
+                            }
+                        }
+                </code>
+            </example>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.IUnitOfWork.Commit">
+            <summary>
+            Saves all pending changes
+            </summary>
+            <returns>The number of objects in an Added, Modified, or Deleted state</returns>
+        </member>
+        <member name="T:VeritasInfrastructureAPI.RepositoryLibrary.UnitOfWork">
+            <summary>
+            The Entity Framework implementation of IUnitOfWork
+            </summary>
+        </member>
+        <member name="F:VeritasInfrastructureAPI.RepositoryLibrary.UnitOfWork._dbContext">
+            <summary>
+            The DbContext
+            </summary>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.UnitOfWork.#ctor(System.Data.Entity.DbContext)">
+            <summary>
+            Initializes a new instance of the UnitOfWork class.
+            </summary>
+            <param name="context">The object context</param>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.UnitOfWork.BeginTransaction">
+            <summary>
+            Begins transaction scope 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.UnitOfWork.BeginTransaction(System.Data.IsolationLevel)">
+            <summary>
+            Begins transaction scope 
+            </summary>
+            <param name="isolationLevel">Represents database isolation level.</param>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.UnitOfWork.CommitTransaction">
+            <summary>
+            Commits the saved transactions
+            </summary>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.UnitOfWork.RollBackTransaction">
+            <summary>
+            Rollbacks the saved transactions
+            </summary>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.UnitOfWork.Commit">
+            <summary>
+            Saves all pending changes
+            </summary>
+            <returns>The number of objects in an Added, Modified, or Deleted state</returns>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.UnitOfWork.Save">
+            <summary>
+            Saves all pending changes
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.UnitOfWork.Dispose">
+            <summary>
+            Disposes the current object
+            </summary>
+        </member>
+        <member name="M:VeritasInfrastructureAPI.RepositoryLibrary.UnitOfWork.Dispose(System.Boolean)">
+            <summary>
+            Disposes all external resources.
+            </summary>
+            <param name="disposing">The dispose indicator.</param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:VeritasInfrastructureAPI.RepositoryLibrary.UnitOfWork.SQLQuery``1(System.String,System.Object[])" -->
+    </members>
+</doc>

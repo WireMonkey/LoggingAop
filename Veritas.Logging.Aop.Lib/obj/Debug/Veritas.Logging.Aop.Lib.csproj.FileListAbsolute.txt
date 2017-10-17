@@ -1,0 +1,62 @@
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\NLog.config
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\NLog.xsd
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\Veritas.Logging.Aop.Lib.dll
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\Veritas.Logging.Aop.Lib.pdb
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\Core.dll
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\itextsharp.dll
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\Microsoft.Practices.EnterpriseLibrary.SemanticLogging.dll
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\Microsoft.Practices.EnterpriseLibrary.SemanticLogging.TextFile.dll
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.Data.dll
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.dll
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\Newtonsoft.Json.dll
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\NLog.dll
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\NLog.Targets.Syslog.dll
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\PostSharp.dll
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\System.Reactive.Core.dll
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\System.Reactive.Interfaces.dll
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\System.Reactive.Linq.dll
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\System.Reactive.PlatformServices.dll
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\VeritasAPI.LogUtilities.dll
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\VeritasAPI.Utilities.dll
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\VeritasInfrastructureAPI.LogServer.dll
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\VeritasInfrastructureAPI.RepositoryLibrary.dll
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\Microsoft.Practices.EnterpriseLibrary.SemanticLogging.xml
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\Microsoft.Practices.EnterpriseLibrary.SemanticLogging.TextFile.xml
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.xml
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.Data.xml
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\Newtonsoft.Json.xml
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\NLog.xml
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\NLog.Targets.Syslog.xml
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\PostSharp.xml
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\VeritasInfrastructureAPI.RepositoryLibrary.xml
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\bin\Debug\Veritas.Logging.Aop.Lib.pssym
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\obj\Debug\Veritas.Logging.Aop.Lib.csproj.CoreCompileInputs.cache
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\obj\Debug\Veritas.Logging.Aop.Lib.dll.postsharp
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\obj\Debug\Veritas.Logging.Aop.Lib.dll
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\obj\Debug\Veritas.Logging.Aop.Lib.pdb
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\obj\Debug\PostSharpHost.config
+C:\Users\josh.kofoot\Documents\Visual Studio 2017\Projects\FidelityEmail\Veritas.Logging.Aop.Lib\obj\Debug\Veritas.Logging.Aop.Lib.csprojResolveAssemblyReference.cache
+C:\Users\josh.kofoot\source\repos\Veritas.Logging.Aop\Veritas.Logging.Aop.Lib\bin\Debug\NLog.config
+C:\Users\josh.kofoot\source\repos\Veritas.Logging.Aop\Veritas.Logging.Aop.Lib\bin\Debug\NLog.xsd
+C:\Users\josh.kofoot\source\repos\Veritas.Logging.Aop\Veritas.Logging.Aop.Lib\bin\Debug\Veritas.Logging.Aop.Lib.dll
+C:\Users\josh.kofoot\source\repos\Veritas.Logging.Aop\Veritas.Logging.Aop.Lib\bin\Debug\Veritas.Logging.Aop.Lib.pdb
+C:\Users\josh.kofoot\source\repos\Veritas.Logging.Aop\Veritas.Logging.Aop.Lib\bin\Debug\Newtonsoft.Json.dll
+C:\Users\josh.kofoot\source\repos\Veritas.Logging.Aop\Veritas.Logging.Aop.Lib\bin\Debug\NLog.dll
+C:\Users\josh.kofoot\source\repos\Veritas.Logging.Aop\Veritas.Logging.Aop.Lib\bin\Debug\NLog.Targets.Syslog.dll
+C:\Users\josh.kofoot\source\repos\Veritas.Logging.Aop\Veritas.Logging.Aop.Lib\bin\Debug\PostSharp.dll
+C:\Users\josh.kofoot\source\repos\Veritas.Logging.Aop\Veritas.Logging.Aop.Lib\bin\Debug\Microsoft.Practices.EnterpriseLibrary.SemanticLogging.xml
+C:\Users\josh.kofoot\source\repos\Veritas.Logging.Aop\Veritas.Logging.Aop.Lib\bin\Debug\Microsoft.Practices.EnterpriseLibrary.SemanticLogging.TextFile.xml
+C:\Users\josh.kofoot\source\repos\Veritas.Logging.Aop\Veritas.Logging.Aop.Lib\bin\Debug\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.xml
+C:\Users\josh.kofoot\source\repos\Veritas.Logging.Aop\Veritas.Logging.Aop.Lib\bin\Debug\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.Data.xml
+C:\Users\josh.kofoot\source\repos\Veritas.Logging.Aop\Veritas.Logging.Aop.Lib\bin\Debug\NLog.xml
+C:\Users\josh.kofoot\source\repos\Veritas.Logging.Aop\Veritas.Logging.Aop.Lib\bin\Debug\NLog.Targets.Syslog.xml
+C:\Users\josh.kofoot\source\repos\Veritas.Logging.Aop\Veritas.Logging.Aop.Lib\bin\Debug\PostSharp.xml
+C:\Users\josh.kofoot\source\repos\Veritas.Logging.Aop\Veritas.Logging.Aop.Lib\bin\Debug\VeritasInfrastructureAPI.RepositoryLibrary.xml
+C:\Users\josh.kofoot\source\repos\Veritas.Logging.Aop\Veritas.Logging.Aop.Lib\bin\Debug\Veritas.Logging.Aop.Lib.pssym
+C:\Users\josh.kofoot\source\repos\Veritas.Logging.Aop\Veritas.Logging.Aop.Lib\obj\Debug\Veritas.Logging.Aop.Lib.csprojResolveAssemblyReference.cache
+C:\Users\josh.kofoot\source\repos\Veritas.Logging.Aop\Veritas.Logging.Aop.Lib\obj\Debug\Veritas.Logging.Aop.Lib.csproj.CoreCompileInputs.cache
+C:\Users\josh.kofoot\source\repos\Veritas.Logging.Aop\Veritas.Logging.Aop.Lib\obj\Debug\Veritas.Logging.Aop.Lib.dll.postsharp
+C:\Users\josh.kofoot\source\repos\Veritas.Logging.Aop\Veritas.Logging.Aop.Lib\obj\Debug\Veritas.Logging.Aop.Lib.dll
+C:\Users\josh.kofoot\source\repos\Veritas.Logging.Aop\Veritas.Logging.Aop.Lib\obj\Debug\Veritas.Logging.Aop.Lib.pdb
+C:\Users\josh.kofoot\source\repos\Veritas.Logging.Aop\Veritas.Logging.Aop.Lib\obj\Debug\PostSharpHost.config

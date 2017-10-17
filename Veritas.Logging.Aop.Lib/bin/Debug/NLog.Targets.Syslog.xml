@@ -1,0 +1,457 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NLog.Targets.Syslog</name>
+    </assembly>
+    <members>
+        <member name="T:NLog.Targets.Syslog.Settings.NotifyPropertyChanged">
+            <summary>Implementation of <see cref="T:System.ComponentModel.INotifyPropertyChanged" /> to simplify config settings</summary>
+        </member>
+        <member name="E:NLog.Targets.Syslog.Settings.NotifyPropertyChanged.PropertyChanged">
+            <summary>Multicast event for property change notifications</summary>
+        </member>
+        <member name="M:NLog.Targets.Syslog.Settings.NotifyPropertyChanged.SetProperty``1(``0@,``0,System.String)">
+            <summary>Sets a property invoking PropertyChanged event handlers</summary>
+        </member>
+        <member name="M:NLog.Targets.Syslog.Settings.NotifyPropertyChanged.OnPropertyChanged(System.String)">
+            <summary>Invokes the handlers of the PropertyChanged event</summary>
+        </member>
+        <member name="M:NLog.Targets.Syslog.Settings.NotifyPropertyChanged.CollectionChangedFactory(System.ComponentModel.PropertyChangedEventHandler)">
+            <summary>Creates a collection changed event handler that manages the PropertyChanged event handler for colleciton items</summary>
+        </member>
+        <member name="T:NLog.Targets.Syslog.Settings.TlsConfig">
+            <summary>TLS configuration</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.TlsConfig.Enabled">
+            <summary>Whether to use TLS or not (TLS 1.2 only)</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.TlsConfig.UseClientCertificates">
+            <summary>Whether to use client certificates or not</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.TlsConfig.CertificateStoreLocation">
+            <summary>The X.509 certificate store location</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.TlsConfig.CertificateStoreName">
+            <summary>The X.509 certificate store name</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.TlsConfig.CertificateFilterType">
+            <summary>The type of filter to apply to the certificate collection</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.TlsConfig.CertificateFilterValue">
+            <summary>The value against which to filter the certificate collection</summary>
+            <remarks> If omitted the certificate collection is not filtered</remarks>
+        </member>
+        <member name="M:NLog.Targets.Syslog.Settings.TlsConfig.#ctor">
+            <summary>Builds a new instance of the TlsConfig class</summary>
+        </member>
+        <member name="T:NLog.Targets.Syslog.Settings.MessageTransmitterConfig">
+            <summary>Message transmission configuration</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.MessageTransmitterConfig.Protocol">
+            <summary>The Syslog server protocol</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.MessageTransmitterConfig.Udp">
+            <summary>UDP related fields</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.MessageTransmitterConfig.Tcp">
+            <summary>TCP related fields</summary>
+        </member>
+        <member name="M:NLog.Targets.Syslog.Settings.MessageTransmitterConfig.#ctor">
+            <summary>Builds a new instance of the MessageTransmitterConfig class</summary>
+        </member>
+        <member name="M:NLog.Targets.Syslog.Settings.MessageTransmitterConfig.Dispose">
+            <summary>Disposes the instance</summary>
+        </member>
+        <member name="T:NLog.Targets.Syslog.Settings.TcpConfig">
+            <summary>TCP configuration</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.TcpConfig.Server">
+            <summary>The IP address or hostname of the Syslog server</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.TcpConfig.Port">
+            <summary>The port number the Syslog server is listening on</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.TcpConfig.ReconnectInterval">
+            <summary>The time interval, in milliseconds, after which a connection is retried</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.TcpConfig.KeepAlive">
+            <summary>KeepAlive configuration</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.TcpConfig.ConnectionCheckTimeout">
+            <summary>The time, in microseconds, to wait for a response when checking the connection status</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.TcpConfig.Tls">
+            <summary>Tls configuration</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.TcpConfig.Framing">
+            <summary>Which framing method to use</summary>
+            <remarks>If <see cref="P:NLog.Targets.Syslog.Settings.TcpConfig.Tls">is enabled</see> get will always return OctetCounting (RFC 5425)</remarks>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.TcpConfig.DataChunkSize">
+            <summary>The size of chunks in which data is split to be sent over the wire</summary>
+        </member>
+        <member name="M:NLog.Targets.Syslog.Settings.TcpConfig.#ctor">
+            <summary>Builds a new instance of the TcpProtocolConfig class</summary>
+        </member>
+        <member name="M:NLog.Targets.Syslog.Settings.TcpConfig.Dispose">
+            <summary>Disposes the instance</summary>
+        </member>
+        <member name="T:NLog.Targets.Syslog.Settings.ThrottlingConfig">
+            <summary>Throttling configuration</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.ThrottlingConfig.Limit">
+            <summary>The number of log entries, waiting to be processed, that triggers throttling</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.ThrottlingConfig.Strategy">
+            <summary>The throttling strategy to apply to incoming log entries</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.ThrottlingConfig.Delay">
+            <summary>The milliseconds/percentage delay for a DiscardOnFixedTimeout/DiscardOnPercentageTimeout/Defer throttling strategy</summary>
+        </member>
+        <member name="M:NLog.Targets.Syslog.Settings.ThrottlingConfig.#ctor">
+            <summary>Builds a new instance of the Throttling class</summary>
+        </member>
+        <member name="T:NLog.Targets.Syslog.Settings.UdpConfig">
+            <summary>UDP configuration</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.UdpConfig.Server">
+            <summary>The IP address or hostname of the Syslog server</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.UdpConfig.Port">
+            <summary>The port number the Syslog server is listening on</summary>
+        </member>
+        <member name="M:NLog.Targets.Syslog.Settings.UdpConfig.#ctor">
+            <summary>Builds a new instance of the UdpProtocolConfig class</summary>
+        </member>
+        <member name="T:NLog.Targets.Syslog.Settings.MessageBuilderConfig">
+            <summary>Message build configuration</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.MessageBuilderConfig.Facility">
+            <summary>The Syslog facility to log from (its name e.g. local0 or local7)</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.MessageBuilderConfig.Rfc">
+            <summary>The Syslog protocol RFC to be followed</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.MessageBuilderConfig.Rfc3164">
+            <summary>RFC 3164 related fields</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.MessageBuilderConfig.Rfc5424">
+            <summary>RFC 5424 related fields</summary>
+        </member>
+        <member name="M:NLog.Targets.Syslog.Settings.MessageBuilderConfig.#ctor">
+            <summary>Builds a new instance of the MessageBuilderConfig class</summary>
+        </member>
+        <member name="M:NLog.Targets.Syslog.Settings.MessageBuilderConfig.Dispose">
+            <summary>Disposes the instance</summary>
+        </member>
+        <member name="T:NLog.Targets.Syslog.Settings.Rfc3164Config">
+            <summary>RFC 3164 configuration</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.Rfc3164Config.Hostname">
+            <summary>The HOSTNAME field of the HEADER part</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.Rfc3164Config.Tag">
+            <summary>The TAG field of the MSG part</summary>
+        </member>
+        <member name="M:NLog.Targets.Syslog.Settings.Rfc3164Config.#ctor">
+            <summary>Builds a new instance of the Rfc3164 class</summary>
+        </member>
+        <member name="T:NLog.Targets.Syslog.Settings.Rfc5424Config">
+            <summary>RFC 5424 configuration</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.Rfc5424Config.Version">
+            <summary>The VERSION field of the HEADER part</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.Rfc5424Config.DefaultHostname">
+            <summary>The default HOSTNAME if no value is provided</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.Rfc5424Config.Hostname">
+            <summary>The HOSTNAME field of the HEADER part</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.Rfc5424Config.DefaultAppName">
+            <summary>The default APPNAME if no value is provided</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.Rfc5424Config.AppName">
+            <summary>The APPNAME field of the HEADER part</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.Rfc5424Config.ProcId">
+            <summary>The PROCID field of the HEADER part</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.Rfc5424Config.MsgId">
+            <summary>The MSGID field of the HEADER part</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.Rfc5424Config.StructuredData">
+            <summary>The STRUCTURED-DATA part</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.Rfc5424Config.DisableBom">
+            <summary>Whether to remove or not BOM in the MSG part</summary>
+            <see href="https://github.com/rsyslog/rsyslog/issues/284">RSyslog issue #284</see>
+        </member>
+        <member name="M:NLog.Targets.Syslog.Settings.Rfc5424Config.#ctor">
+            <summary>Builds a new instance of the Rfc5424 class</summary>
+        </member>
+        <member name="M:NLog.Targets.Syslog.Settings.Rfc5424Config.Dispose">
+            <summary>Disposes the instance</summary>
+        </member>
+        <member name="T:NLog.Targets.Syslog.Settings.SdElementConfig">
+            <summary>Syslog SD-ELEMENT field configuration</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.SdElementConfig.SdId">
+            <summary>The SD-ID field of an SD-ELEMENT field in the STRUCTURED-DATA part</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.SdElementConfig.SdParams">
+            <summary>The SD-PARAM fields belonging to an SD-ELEMENT field in the STRUCTURED-DATA part</summary>
+        </member>
+        <member name="M:NLog.Targets.Syslog.Settings.SdElementConfig.#ctor">
+            <summary>Builds a new instance of the SdElement class</summary>
+        </member>
+        <member name="M:NLog.Targets.Syslog.Settings.SdElementConfig.Dispose">
+            <summary>Disposes the instance</summary>
+        </member>
+        <member name="T:NLog.Targets.Syslog.Settings.SdIdConfig">
+            <summary>Syslog SD-ID field configuration</summary>
+        </member>
+        <member name="M:NLog.Targets.Syslog.Settings.SdIdConfig.#ctor">
+            <summary>Builds a new instance of the SdId class</summary>
+        </member>
+        <member name="M:NLog.Targets.Syslog.Settings.SdIdConfig.#ctor(System.String)">
+            <summary>Builds a new instance of the SdId class</summary>
+            <param name="text">The layout string to parse</param>
+        </member>
+        <member name="M:NLog.Targets.Syslog.Settings.SdIdConfig.op_Implicit(System.String)~NLog.Targets.Syslog.Settings.SdIdConfig">
+            <summary>Converts a string to a new instance of the SdId class</summary>
+            <param name="text">The layout string to parse</param>
+            <remarks>Needed to parse NLog configuration</remarks>
+        </member>
+        <member name="T:NLog.Targets.Syslog.Settings.SdParamConfig">
+            <summary>Syslog SD-PARAM field configuration</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.SdParamConfig.Name">
+            <summary>The PARAM-NAME field of this SD-PARAM</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.SdParamConfig.Value">
+            <summary>The PARAM-VALUE field of this SD-PARAM</summary>
+        </member>
+        <member name="T:NLog.Targets.Syslog.Settings.StructuredDataConfig">
+            <summary>Syslog STRUCTURED-DATA part configuration</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.StructuredDataConfig.FromEventProperties">
+            <summary>Allows to use log event properties data enabling different STRUCTURED-DATA for each log message</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.StructuredDataConfig.SdElements">
+            <summary>The SD-ELEMENTs contained in the STRUCTURED-DATA part</summary>
+        </member>
+        <member name="M:NLog.Targets.Syslog.Settings.StructuredDataConfig.#ctor">
+            <summary>Builds a new instance of the StructuredData class</summary>
+        </member>
+        <member name="M:NLog.Targets.Syslog.Settings.StructuredDataConfig.Dispose">
+            <summary>Disposes the instance</summary>
+        </member>
+        <member name="T:NLog.Targets.Syslog.Settings.ThrottlingStrategy">
+            <summary>The throttling strategy to be used</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.ThrottlingStrategy.None">
+            <summary>No throttling strategy</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.ThrottlingStrategy.DiscardOnFixedTimeout">
+            <summary>Discard after a fixed timeout</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.ThrottlingStrategy.DiscardOnPercentageTimeout">
+            <summary>Discard after a timeout percentage of the log entries waiting to be processed</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.ThrottlingStrategy.Discard">
+            <summary>Discard log entries</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.ThrottlingStrategy.DeferForFixedTime">
+            <summary>Defer for a fixed time</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.ThrottlingStrategy.DeferForPercentageTime">
+            <summary>Defer for a time percentage of the log entries waiting to be processed</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.ThrottlingStrategy.Block">
+            <summary>Block indefinitely until waiting log entries decrease</summary>
+        </member>
+        <member name="T:NLog.Targets.Syslog.Settings.EnforcementConfig">
+            <summary>Enforcement configuration</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.EnforcementConfig.Throttling">
+            <summary>Throttling to be triggered when a configured number of log entries are waiting to be processed</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.EnforcementConfig.MessageProcessors">
+            <summary>The amount of parallel message processors</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.EnforcementConfig.SplitOnNewLine">
+            <summary>Whether or not to split each log entry by newlines and send each line separately</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.EnforcementConfig.Transliterate">
+            <summary>Whether or not to transliterate from Unicode to ASCII</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.EnforcementConfig.ReplaceInvalidCharacters">
+            <summary>Whether or not to replace invalid characters on the basis of RFC rules</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.EnforcementConfig.TruncateFieldsToMaxLength">
+            <summary>Whether or not to truncate fields to the max length specified in RFCs</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.EnforcementConfig.TruncateMessageTo">
+            <summary>The length to truncate the Syslog message to or zero</summary>
+        </member>
+        <member name="M:NLog.Targets.Syslog.Settings.EnforcementConfig.#ctor">
+            <summary>Builds a new instance of the EnforcementConfig class</summary>
+        </member>
+        <member name="M:NLog.Targets.Syslog.Settings.EnforcementConfig.Dispose">
+            <summary>Disposes the instance</summary>
+        </member>
+        <member name="T:NLog.Targets.Syslog.Settings.FramingMethod">
+            <summary>The framing method to be used when transmitting a message</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.FramingMethod.NonTransparent">
+            <summary>NonTransparent framing</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.FramingMethod.OctetCounting">
+            <summary>OctetCounting framing</summary>
+        </member>
+        <member name="T:NLog.Targets.Syslog.Settings.ProtocolType">
+            <summary>The protocol to be used when transmitting a message</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.ProtocolType.Udp">
+            <summary>UDP protocol</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.ProtocolType.Tcp">
+            <summary>TCP protocol</summary>
+        </member>
+        <member name="T:NLog.Targets.Syslog.Settings.RfcNumber">
+            <summary>The Syslog protocol RFC to be followed</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.RfcNumber.Rfc3164">
+            <summary>RFC 3164</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.RfcNumber.Rfc5424">
+            <summary>RFC 5424</summary>
+        </member>
+        <member name="T:NLog.Targets.Syslog.Settings.Facility">
+            <summary>Syslog facilities</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.Facility.Kernel">
+            <summary>Kernel messages</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.Facility.User">
+            <summary>Random user-level messages</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.Facility.Mail">
+            <summary>Mail system</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.Facility.Daemons">
+            <summary>System daemons</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.Facility.Authorization">
+            <summary>Security/authorization messages</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.Facility.Syslog">
+            <summary>Messages generated internally by syslogd</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.Facility.Printer">
+            <summary>Line printer subsystem</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.Facility.News">
+            <summary>Network news subsystem</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.Facility.Uucp">
+            <summary>UUCP subsystem</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.Facility.Clock">
+            <summary>Clock (cron/at) daemon</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.Facility.Authorization2">
+            <summary>Security/authorization messages (private)</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.Facility.Ftp">
+            <summary>FTP daemon</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.Facility.Ntp">
+            <summary>NTP subsystem</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.Facility.Audit">
+            <summary>Log audit</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.Facility.Alert">
+            <summary>Log alert</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.Facility.Clock2">
+            <summary>Clock daemon</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.Facility.Local0">
+            <summary>Reserved for local use</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.Facility.Local1">
+            <summary>Reserved for local use</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.Facility.Local2">
+            <summary>Reserved for local use</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.Facility.Local3">
+            <summary>Reserved for local use</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.Facility.Local4">
+            <summary>Reserved for local use</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.Facility.Local5">
+            <summary>Reserved for local use</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.Facility.Local6">
+            <summary>Reserved for local use</summary>
+        </member>
+        <member name="F:NLog.Targets.Syslog.Settings.Facility.Local7">
+            <summary>Reserved for local use</summary>
+        </member>
+        <member name="T:NLog.Targets.Syslog.Settings.KeepAliveConfig">
+            <summary>KeepAlive configuration</summary>
+            <remarks>The number of keep-alive probes (data retransmissions) is set to 10 and cannot be changed</remarks>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.KeepAliveConfig.Enabled">
+            <summary>Whether to use keep-alive or not</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.KeepAliveConfig.Timeout">
+            <summary>The timeout, in milliseconds, with no activity until the first keep-alive packet is sent</summary>
+            <remarks>The default value, on TCP socket initialization, is 2 hours</remarks>
+        </member>
+        <member name="P:NLog.Targets.Syslog.Settings.KeepAliveConfig.Interval">
+            <summary>The interval, in milliseconds, between when successive keep-alive packets are sent if no acknowledgement is received</summary>
+            <remarks>The default value, on TCP socket initialization, is 1 second</remarks>
+        </member>
+        <member name="M:NLog.Targets.Syslog.Settings.KeepAliveConfig.#ctor">
+            <summary>Builds a new instance of the KeepAliveConfig class</summary>
+        </member>
+        <member name="M:NLog.Targets.Syslog.Policies.Unidecoder.Unidecode(System.String,System.Nullable{System.Int32})">
+            <summary>Transliterate Unicode string to ASCII string</summary>
+            <param name="input">String you want to transliterate into ASCII</param>
+            <param name="tempStringBuilderCapacity">The length of the result, if you know it (default is InputString.Length * 2)</param>
+            <returns>ASCII string: there are [?] (3 characters) in places of some unknown(?) unicode characters (same as original Python code)</returns>
+        </member>
+        <member name="T:NLog.Targets.Syslog.SyslogTarget">
+            <summary>Enables logging to a Unix-style Syslog server using NLog</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.SyslogTarget.Enforcement">
+            <summary>The enforcement to be applied on the Syslog message</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.SyslogTarget.MessageCreation">
+            <summary>The settings used to create messages according to RFCs</summary>
+        </member>
+        <member name="P:NLog.Targets.Syslog.SyslogTarget.MessageSend">
+            <summary>The settings used to send messages to the Syslog server</summary>
+        </member>
+        <member name="M:NLog.Targets.Syslog.SyslogTarget.#ctor">
+            <summary>Builds a new instance of the SyslogTarget class</summary>
+        </member>
+        <member name="M:NLog.Targets.Syslog.SyslogTarget.InitializeTarget">
+            <summary>Initializes the SyslogTarget</summary>
+        </member>
+        <member name="M:NLog.Targets.Syslog.SyslogTarget.Write(NLog.Common.AsyncLogEventInfo)">
+            <summary>Writes a single event</summary>
+            <param name="asyncLogEvent">The NLog.AsyncLogEventInfo</param>
+            <remarks>Write(LogEventInfo) is called only by Write(AsyncLogEventInfo/AsyncLogEventInfo[]): no need to override it</remarks>
+        </member>
+        <member name="M:NLog.Targets.Syslog.SyslogTarget.Dispose(System.Boolean)">
+            <summary>Disposes the instance</summary>
+        </member>
+    </members>
+</doc>
